@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+  </head>
+
+  <body>
+    <h1>Home</h1>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+        <div>Welcome to Shortened URL <%= current_user.name %> </div>
+        <div> Token:  <%= session[:jwt_token] if session %>  </div>
+        <div> <%=link_to "Sign Out", destroy_user_session_path, :method => :delete %> </div>
+    <% else %>
+        <div> <%=button_to "Sign In", new_user_session_path %> </div>
+    <% end %>
+  </body>
+</html>

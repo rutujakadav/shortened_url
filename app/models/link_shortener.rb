@@ -11,10 +11,10 @@ class LinkShortener < ApplicationRecord
             self.long_url = url
             self.alias = url_alias
             self.save!
-            return {success: true, "shortend_url": shortend_url}
+            return {success: true, shortend_url: shortend_url}
         rescue Exception => e
-            return {success: true, "shortend_url": shortend_url} if e.to_s =~ /Alias has already been taken/
-            return {error: true, "message": e.to_s}
+            return {success: true, shortend_url: shortend_url} if e.to_s =~ /Alias has already been taken/
+            return {error: true, message: e.to_s}
         end
     end
 
